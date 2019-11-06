@@ -14,19 +14,24 @@ def index():
 # Routes for static resources
 
 @app.route('/js/<path:path>')
-def send_js(path):
+def get_js(path):
     return send_from_directory('js', path)
 
 @app.route('/css/<path:path>')
-def send_css(path):
+def get_css(path):
     return send_from_directory('css', path)
+
+# Route to retrieve data file
+@app.route('/data/<path:path>')
+def get_data(path):
+    return send_from_directory('data', path)
 
 
 # HTTP actions for assignment 3
 
 @app.route('/users', methods = ['GET'])
 def getUsers():
-    with open('data.json', 'r') as f:
+    with open('data/entries.json', 'r') as f:
         d = json.load(f)
         return(d)
 
@@ -41,15 +46,18 @@ def addUser(user_id):
         "startYear": int(request.form.get("startYear"))
     }
 
-    with open('data.json', 'r') as f:
+    with open('data/entries.json', 'r') as f:
         d = json.load(f)
         d["records"].push(newUser)
-        print(d)
+
         return(d)
     pass
     
 @app.route('/user/<user_id>', methods = ['GET'])
 def deleteUser(user_id):
+    with open('data/entries.json', 'r') as f:
+        d = json.load(f)
+        print(d)
     pass
 
 
