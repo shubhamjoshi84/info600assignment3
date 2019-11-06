@@ -1,6 +1,7 @@
 from flask import Flask, request, send_from_directory
 import json
 import uuid
+from shutil import copyfile
 
 app = Flask(__name__, static_url_path='')
 
@@ -35,8 +36,8 @@ def getUsers():
         d = json.load(f)
         return(d)
 
-@app.route('/user/<user_id>', methods = ['GET'])
-def addUser(user_id):
+@app.route('/user/', methods = ['GET', 'POST'])
+def addUser():
     newId = uuid.uuid4().hex[:6]
 
     newUser = {
@@ -46,13 +47,20 @@ def addUser(user_id):
         "startYear": int(request.form.get("startYear"))
     }
 
-    with open('data/entries.json', 'r') as f:
-        d = json.load(f)
-        d["records"].push(newUser)
+    data = ''
+    fileName = 'data/entries.json'
+    with open(fileName, 'r') as f:
+        # Read the JSON into a variable
+        data = json.load(f)
 
-        return(d)
-    pass
-    
+        # Add a new record to the JSON
+        data["records"].append(newUser)
+
+    with open(fileName, 'w') as f:
+        # Write the modified list to file
+        json.dump(data, f)
+
+
 @app.route('/user/<user_id>', methods = ['GET'])
 def deleteUser(user_id):
     with open('data/entries.json', 'r') as f:
@@ -62,7 +70,10 @@ def deleteUser(user_id):
 
 
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', port=8081, debug=True)
+  # If you mess up your data, re-run the container and it will be restored
+  copyfile('data/entries_orig.json', 'data/entries.json')
+
+  app.run(host='0.0.0.0', port=8081, debug=True)
       
 
 '''
