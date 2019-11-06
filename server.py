@@ -61,12 +61,6 @@ def deleteUser(user_id):
     pass
 
 
-
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name="tell me your name"):
-  return "Hello, " + name + "!"
-
 if __name__ == '__main__':
       app.run(host='0.0.0.0', port=8081, debug=True)
       
@@ -74,4 +68,5 @@ if __name__ == '__main__':
 '''
  docker image build -t assignment3 .
  docker run -d -p 8081:8081 assignment3
+ docker run --rm -it --mount src="$(pwd)",target=/app,type=bind -p 8081:8081 assignment3
 '''

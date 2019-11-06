@@ -1,8 +1,9 @@
 FROM       python:latest
 RUN pip install flask
 
+RUN mkdir /app
+
 WORKDIR /app
-COPY . /app
 
 RUN set -e
 
