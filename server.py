@@ -4,9 +4,11 @@ import uuid
 
 app = Flask(__name__, static_url_path='')
 
+# Main route to display form.html for the root index
+
 @app.route('/')
 def index():
-  return send_from_directory(app.static_folder, 'form.html')
+  return send_from_directory('.', 'form.html')
 
 
 # Routes for static resources
@@ -58,10 +60,10 @@ def hello(name="tell me your name"):
   return "Hello, " + name + "!"
 
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', port=8081)
+      app.run(host='0.0.0.0', port=8081, debug=True)
       
 
 '''
  docker image build -t assignment3 .
- docker run -d -p 27017:27017 -p 8081:8081 assignment3
+ docker run -d -p 8081:8081 assignment3
 '''
