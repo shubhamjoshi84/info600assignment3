@@ -56,18 +56,27 @@ def addUser():
         # Add a new record to the JSON
         data["records"].append(newUser)
 
-    with open(fileName, 'w') as f:
-        # Write the modified list to file
-        json.dump(data, f)
+    writeToFile(data, fileName)
 
-
-@app.route('/user/<user_id>', methods = ['GET'])
+@app.route('/user/<user_id>', methods = ['DELETE'])
 def deleteUser(user_id):
-    with open('data/entries.json', 'r') as f:
-        d = json.load(f)
-        print(d)
-    pass
+    data = ''
+    fileName = 'data/entries.json'
+    with open(fileName, 'r') as f:
+        data = json.load(f)
 
+    # Iterate through records, delete one that matches user id
+    for record in data["records"]:
+        if record["id"] == "user_id":
+            del record
+
+    writeToFile(fileName, data)
+
+
+def writeToFile(filePath, jsonString):
+    with open(filePath, 'w') as f:
+        # Write the modified list to file
+        json.dump(jsonString, f)
 
 if __name__ == '__main__':
   # If you mess up your data, re-run the container and it will be restored
