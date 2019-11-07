@@ -67,8 +67,10 @@ def deleteUser(user_id):
 
     # Iterate through records, delete one that matches user id
     for i, record in enumerate(data["records"]):
-        if record["id"] == "user_id":
+        if record["id"] == user_id:
             del data["records"][i]
+
+    print(data)
 
     writeToFile(fileName, data)
     return make_response('', 200)
