@@ -1,0 +1,15 @@
+{
+	"records": [{
+		    "id": "jsmith1",
+			"fullName": "John Smith",
+			"major": "Information Systems",
+			"startYear": 2015
+		},
+		{
+			"id": "42",
+			"fullName": "Greg Brown",
+			"major": "Computer Science",
+			"startYear": 2012
+		}
+	]
+}
