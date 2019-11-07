@@ -1,15 +1,16 @@
 {
-	"records": [{
-		    "id": "jsmith1",
-			"fullName": "John Smith",
-			"major": "Information Systems",
-			"startYear": 2015
-		},
-		{
-			"id": "42",
-			"fullName": "Greg Brown",
-			"major": "Computer Science",
-			"startYear": 2012
-		}
-	]
+    "records": [
+        {
+            "fullName": "John Smith",
+            "id": "jsmith1",
+            "major": "Information Systems",
+            "startYear": 2015
+        },
+        {
+            "fullName": "Greg Brown",
+            "id": "42",
+            "major": "Computer Science",
+            "startYear": 2012
+        }
+    ]
 }

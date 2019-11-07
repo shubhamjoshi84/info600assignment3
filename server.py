@@ -1,4 +1,4 @@
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, make_response
 import json
 import uuid
 from shutil import copyfile
@@ -66,17 +66,18 @@ def deleteUser(user_id):
         data = json.load(f)
 
     # Iterate through records, delete one that matches user id
-    for record in data["records"]:
+    for i, record in enumerate(data["records"]):
         if record["id"] == "user_id":
-            del record
+            del data["records"][i]
 
     writeToFile(fileName, data)
+    return make_response('', 200)
 
 
 def writeToFile(filePath, jsonString):
     with open(filePath, 'w') as f:
         # Write the modified list to file
-        json.dump(jsonString, f)
+        json.dump(jsonString, f, sort_keys=True, indent=4)
 
 if __name__ == '__main__':
   # If you mess up your data, re-run the container and it will be restored
