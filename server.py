@@ -70,8 +70,6 @@ def deleteUser(user_id):
         if record["id"] == user_id:
             del data["records"][i]
 
-    print(data)
-
     writeToFile(fileName, data)
     return make_response('', 200)
 
