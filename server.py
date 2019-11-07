@@ -89,7 +89,8 @@ if __name__ == '__main__':
       
 
 '''
- docker image build -t assignment3 .
- docker run -d -p 8081:8081 assignment3
- docker run --rm -it --mount src="$(pwd)",target=/app,type=bind -p 8081:8081 assignment3
+ Build the Docker image:
+   docker image build -t assignment3 .
+ Run the Docker image:
+   docker run --rm -it --mount src="$(pwd)",target=/app,type=bind -p 8081:8081 assignment3
 '''
