@@ -18,5 +18,15 @@ ul {
 }
 
 #buttonParent {
-  margin-top: 1.1em;
+  margin-left: 1px;
+	height:50px; 
+	width:220px;
+}
+#addRec{
+	height:50px;
+	width: 100px;
+}
+#loadData{
+	height:50px;
+	width: 100px;
 }

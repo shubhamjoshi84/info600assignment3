@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.getJSON("http://192.168.99.100:8081/users", function(result){
+      $.each(result, function(i, field){
+	   for(var k=0;k<field.length;k++){
+            $("div").append(field[k].fullName + " , " + field[k].major + " ,  " + field[k].startYear + "<br>");
+			//alert(field[k].fullName);//
+           }
+	  
+        ////
+      });
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<button>Get JSON data</button>
+
+<div></div>
+
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Use the XMLHttpRequest to get the content of a file.</h2>
+<p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
+
+<p id="demo"></p>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+    document.getElementById("demo").innerHTML = myObj.;
+  }
+};
+xmlhttp.open("GET", "http://192.168.99.100:8081/users", true);
+xmlhttp.send();
+</script>
+
+<p>Take a look at <a href="json_demo.txt" target="_blank">json_demo.txt</a></p>
+
+</body>
+</html>
+-->

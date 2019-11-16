@@ -30,6 +30,7 @@ def get_data(path):
 
 # HTTP actions for assignment 3
 
+
 @app.route('/users', methods = ['GET'])
 def getUsers():
     with open('data/entries.json', 'r') as f:

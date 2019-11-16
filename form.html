@@ -1,10 +1,35 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Student Record Management</title>
     <link rel="stylesheet" href="css/main.css" />
     <script src="js/main.js"></script>
+	
+	
+	<!-- Added a script to fetch AJAX library and to load the data of 2 records-->
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $("#loadData").click(function(){
+		$.getJSON("http://192.168.99.100:8081/users", function(result){
+		  $.each(result, function(i, field){
+		   for(var k=0;k<field.length;k++){
+				$("#displayData").append(field[k].fullName + " , " + field[k].major + " ,  " + field[k].startYear + "<br>");
+				
+			   }
+		  
+			////
+		  });
+		});
+	  });
+	});
+	</script>		
+	
+
 </head>
 <body>
 
@@ -28,6 +53,12 @@
 
 <div id="buttonParent">
 <input type="button" value="Add Record" id="addRec" />
+<input type="button" value="Load Data" id="loadData" /> 
+
+
+
+</div>
+
 </div>
 </form>
 
@@ -35,7 +66,9 @@
 
 <h1>Entered Records:</h1>
 
+
 <ul id="enteredRecords">
+<div id="displayData">
 </ul>
 
 
