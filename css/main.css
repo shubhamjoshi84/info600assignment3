@@ -22,6 +22,8 @@ ul {
 	height:50px; 
 	width:220px;
 }
+/* Added CSS for addRec and loadData button*/
+
 #addRec{
 	height:50px;
 	width: 100px;

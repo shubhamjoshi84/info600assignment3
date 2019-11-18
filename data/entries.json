@@ -8,9 +8,27 @@
         },
         {
             "fullName": "Greg Brown",
-            "id": "42",
+            "id": "bf66b5",
             "major": "Computer Science",
             "startYear": 2012
+        },
+        {
+            "fullName": "test",
+            "id": "92a3d6",
+            "major": "test",
+            "startYear": 2019
+        },
+        {
+            "fullName": "Shubham Joshi",
+            "id": "3830bc",
+            "major": "CS",
+            "startYear": 2019
+        },
+        {
+            "fullName": "James Smith",
+            "id": "ff828d",
+            "major": "Data Science",
+            "startYear": 2019
         }
     ]
 }
